@@ -3,25 +3,93 @@
     <div class="section-head">
       <span class="eyebrow">What We Build</span>
       <h2>One Platform, Every Department</h2>
-      <p>Nine connected products, laid out the way your teams actually think about them.</p>
+      <p>Eight connected products, laid out the way your teams actually think about them.</p>
     </div>
 
     <div class="bento">
       @for (tile of tiles; track tile.title) {
-        @if (tile.size === 'big') {
-          <div class="bento-tile big fill" [class.t-teal-fill]="tile.fill === 'teal'" [class.t-blue-fill]="tile.fill === 'blue'">
+        @if (tile.layout === 'card') {
+          <div class="bento-tile card" [class]="'c-' + tile.tone">
             <span class="bento-icon"><app-icon [name]="tile.icon" /></span>
             <h3>{{ tile.title }}</h3>
-            @if (tile.body) {
-              <p>{{ tile.body }}</p>
-            }
+            <p>{{ tile.body }}</p>
+            <span class="card-arrow"><app-icon name="arrow" /></span>
           </div>
         } @else {
-          <div class="bento-tile card">
-            <span class="bento-icon" [class]="tile.iconClass"><app-icon [name]="tile.icon" /></span>
-            <h3>{{ tile.title }}</h3>
-          </div>
+          <a class="bento-tile" [class]="tile.layout + ' t-' + tile.tone" [href]="tile.href">
+            <span class="tile-illustration">
+              @if (tile.illustration === 'hms') {
+                <svg class="tile-illustration-svg" viewBox="0 0 240 200" aria-hidden="true">
+                  <path class="ti-line" d="M70 45 L128 92" />
+                  <path class="ti-line" d="M150 25 L128 92" />
+                  <path class="ti-line" d="M205 60 L152 94" />
+                  <path class="ti-line" d="M192 128 L162 108" />
+
+                  <use class="ti-building" href="#i-building" x="95" y="58" width="112" height="112" />
+
+                  <circle class="ti-badge" cx="70" cy="45" r="17" />
+                  <use class="ti-badge-icon" href="#i-stetho" x="61" y="36" width="18" height="18" />
+
+                  <circle class="ti-badge" cx="150" cy="25" r="17" />
+                  <use class="ti-badge-icon" href="#i-heart-pulse" x="141" y="16" width="18" height="18" />
+
+                  <circle class="ti-badge" cx="205" cy="60" r="15" />
+                  <use class="ti-badge-icon" href="#i-clipboard" x="197" y="52" width="16" height="16" />
+
+                  <circle class="ti-badge" cx="192" cy="128" r="15" />
+                  <use class="ti-badge-icon" href="#i-users" x="184" y="120" width="16" height="16" />
+                </svg>
+              } @else {
+                <svg class="tile-illustration-svg" viewBox="0 0 240 200" aria-hidden="true">
+                  <path class="ti-line" d="M70 35 L120 95" />
+                  <path class="ti-line" d="M170 20 L136 96" />
+                  <path class="ti-line" d="M207 65 L156 100" />
+                  <path class="ti-line" d="M188 152 L152 122" />
+
+                  <rect class="ti-panel" x="70" y="70" width="140" height="95" rx="10" />
+                  <line class="ti-panel-rule" x1="70" y1="92" x2="210" y2="92" />
+                  <circle class="ti-dot" cx="82" cy="81" r="2.6" />
+                  <circle class="ti-dot" cx="91" cy="81" r="2.6" />
+                  <circle class="ti-dot" cx="100" cy="81" r="2.6" />
+                  <rect class="ti-bar" x="83" y="104" width="70" height="7" rx="3.5" />
+                  <rect class="ti-bar-soft" x="83" y="118" width="95" height="6" rx="3" />
+                  <rect class="ti-bar-soft" x="83" y="130" width="80" height="6" rx="3" />
+                  <rect class="ti-cta-pill" x="83" y="144" width="42" height="11" rx="5.5" />
+
+                  <circle class="ti-badge" cx="70" cy="35" r="16" />
+                  <use class="ti-badge-icon" href="#i-sparkle" x="61" y="26" width="18" height="18" />
+
+                  <circle class="ti-badge" cx="170" cy="20" r="16" />
+                  <use class="ti-badge-icon" href="#i-trend" x="161" y="11" width="18" height="18" />
+
+                  <circle class="ti-badge" cx="207" cy="65" r="15" />
+                  <use class="ti-badge-icon" href="#i-chat" x="199" y="57" width="16" height="16" />
+
+                  <circle class="ti-badge" cx="188" cy="152" r="15" />
+                  <use class="ti-badge-icon" href="#i-smartphone" x="181" y="145" width="14" height="14" />
+                </svg>
+              }
+            </span>
+            <div class="tile-copy">
+              <span class="bento-icon"><app-icon [name]="tile.icon" /></span>
+              <h3>{{ tile.title }}</h3>
+              <p>{{ tile.body }}</p>
+              <span class="tile-cta">
+                {{ tile.cta }}
+                <span class="tile-cta-arrow"><app-icon name="arrow" /></span>
+              </span>
+            </div>
+          </a>
         }
+      }
+    </div>
+
+    <div class="trust-bar">
+      @for (t of trust; track t.title) {
+        <div class="trust-item">
+          <span class="trust-icon"><app-icon [name]="t.icon" /></span>
+          {{ t.title }}
+        </div>
       }
     </div>
   </div>
