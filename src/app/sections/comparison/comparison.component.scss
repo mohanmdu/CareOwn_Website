@@ -1,0 +1,73 @@
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  min-width: 640px;
+
+  th,
+  td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  thead th {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+    border-bottom: 2px solid var(--border);
+  }
+
+  tbody th {
+    font-weight: 700;
+    color: var(--heading);
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child td,
+  tbody tr:last-child th {
+    border-bottom: none;
+  }
+}
+
+.col-traditional {
+  color: var(--text-muted);
+}
+
+.col-careown {
+  color: var(--primary);
+  font-weight: 600;
+  background: color-mix(in srgb, var(--primary) 5%, transparent);
+}
+
+td.col-traditional,
+td.col-careown {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+
+  .icon {
+    flex-shrink: 0;
+    margin-top: 0.2em;
+    width: 1.1em;
+    height: 1.1em;
+  }
+}
+
+td.col-traditional .icon {
+  color: #cbd5e1;
+}
+
+td.col-careown .icon {
+  color: var(--secondary);
+}

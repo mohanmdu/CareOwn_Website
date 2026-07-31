@@ -1,0 +1,18 @@
+<section class="section" id="why-choose">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The CareOwn Difference</span>
+      <h2>Why Choose CareOwn</h2>
+    </div>
+
+    <div class="why-grid">
+      @for (item of items; track item.title; let i = $index) {
+        <div class="why-card" [style.--w-color]="colorFor(i)">
+          <span class="why-icon"><app-icon [name]="item.icon" /></span>
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Let's Talk</span>
+      <h2>Ready to See CareOwn HMS Live?</h2>
+      <p>Book a free demo, request a quote, or just ask a question — we reply from a real person, not a bot.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-card">
+          <span class="info-icon" style="--i-color: var(--accent)"><app-icon name="phone" /></span>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:+918122940662">+91 81229 40662</a></p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon" style="--i-color: var(--cta)"><app-icon name="mail" /></span>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@careownitsolutions.com">info&#64;careownitsolutions.com</a></p>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon" style="--i-color: #25d366"><app-icon name="whatsapp" /></span>
+          <div>
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/918122940662" target="_blank" rel="noopener">Chat with us</a></p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form glass" (ngSubmit)="submit()">
+        <div class="form-row">
+          <label for="c-name">Name</label>
+          <input id="c-name" name="name" required [(ngModel)]="name" placeholder="Your name" />
+        </div>
+        <div class="form-row">
+          <label for="c-email">Email</label>
+          <input id="c-email" name="email" type="email" required [(ngModel)]="email" placeholder="you@hospital.com" />
+        </div>
+        <div class="form-row">
+          <label for="c-hospital">Hospital / Clinic Name</label>
+          <input id="c-hospital" name="hospital" [(ngModel)]="hospital" placeholder="MC Hospital" />
+        </div>
+        <div class="form-row">
+          <label for="c-message">Message</label>
+          <textarea id="c-message" name="message" rows="4" [(ngModel)]="message" placeholder="Tell us about your hospital and what you need"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        <p class="form-note">Opens your email client, addressed to our team — this is a static site with no backend form handler.</p>
+      </form>
+    </div>
+  </div>
+</section>

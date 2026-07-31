@@ -1,0 +1,28 @@
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Simple, Modular Pricing</span>
+      <h2>Plans That Grow With You</h2>
+      <p>Every tier maps to real, licensed modules — never an invented feature list. Talk to us for a quote sized to your hospital.</p>
+    </div>
+
+    <div class="pricing-row">
+      @for (tier of tiers; track tier.name) {
+        <div class="price-card" [class.popular]="tier.popular">
+          @if (tier.popular) {
+            <span class="popular-tag">Most Popular</span>
+          }
+          <div class="price-tier">{{ tier.name }}</div>
+          <p class="price-tagline">{{ tier.tagline }}</p>
+          <div class="price-val">Contact for Pricing</div>
+          <ul class="price-list">
+            @for (f of tier.features; track f) {
+              <li><app-icon name="check" />{{ f }}</li>
+            }
+          </ul>
+          <a class="btn btn-block" [class.btn-primary]="tier.popular" [class.btn-ghost]="!tier.popular" href="#contact">{{ tier.ctaLabel }}</a>
+        </div>
+      }
+    </div>
+  </div>
+</section>

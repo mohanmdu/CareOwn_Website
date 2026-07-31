@@ -1,0 +1,21 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner glass">
+    <a href="#top" class="brand" (click)="closeNav()">
+      <img src="/images/careown-icon.png" alt="CareOwn logo" class="brand-mark" />
+      <span class="brand-text">CareOwn <span class="brand-accent">IT Solutions</span></span>
+    </a>
+
+    <button type="button" class="nav-toggle" [attr.aria-expanded]="navOpen()" aria-label="Toggle navigation" (click)="toggleNav()">
+      <app-icon [name]="navOpen() ? 'close' : 'grid'" />
+    </button>
+
+    <nav class="site-nav" [class.site-nav-open]="navOpen()">
+      @for (link of navLinks; track link.href) {
+        <a [href]="link.href" (click)="closeNav()">{{ link.label }}</a>
+      }
+      <a href="#contact" class="btn btn-primary btn-sm" (click)="closeNav()">Book Free Demo</a>
+    </nav>
+  </div>
+</header>

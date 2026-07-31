@@ -1,0 +1,22 @@
+<section class="section faq-section" id="faq">
+  <div class="container faq-container">
+    <div class="section-head">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-list">
+      @for (item of items; track item.q; let i = $index) {
+        <div class="faq-item" [class.open]="openIndex() === i">
+          <button type="button" class="faq-question" (click)="toggle(i)" [attr.aria-expanded]="openIndex() === i">
+            {{ item.q }}
+            <app-icon name="chevron-down" class="faq-chevron" />
+          </button>
+          <div class="faq-answer">
+            <p>{{ item.a }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

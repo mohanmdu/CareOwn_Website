@@ -1,0 +1,35 @@
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">About CareOwn</span>
+      <h2>Software Built by People Who Understand Hospitals</h2>
+      <p>
+        CareOwn IT Solutions Pvt. Ltd. builds CareOwn HMS — a Hospital Management System designed around the way a
+        hospital actually runs, from the front desk to the pharmacy counter to the patient's phone.
+      </p>
+    </div>
+
+    <div class="grid grid-3 highlight-grid">
+      @for (item of highlights; track item.title) {
+        <div class="highlight-card">
+          <span class="highlight-icon"><app-icon [name]="item.icon" /></span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.body }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="grid grid-3 mission-vision">
+      <div class="mv-card mv-primary">
+        <span class="mv-icon"><app-icon name="target" /></span>
+        <h3>Our Mission</h3>
+        <p>Give every hospital — regardless of size — one connected system instead of ten disconnected tools.</p>
+      </div>
+      <div class="mv-card mv-accent">
+        <span class="mv-icon"><app-icon name="eye" /></span>
+        <h3>Our Vision</h3>
+        <p>Be the platform hospitals grow into, from a single clinic to a multi-branch, multi-tenant network.</p>
+      </div>
+    </div>
+  </div>
+</section>

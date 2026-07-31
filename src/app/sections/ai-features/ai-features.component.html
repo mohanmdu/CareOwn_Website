@@ -1,0 +1,21 @@
+<section class="section" id="ai-features">
+  <div class="container">
+    <div class="ai-panel">
+      <div class="section-head">
+        <span class="eyebrow ai-eyebrow">AI-Powered</span>
+        <h2>Intelligence Built Into the Workflow</h2>
+        <p>Not a bolt-on chatbot — AI assistance woven into the screens your staff already use every day.</p>
+      </div>
+
+      <div class="ai-grid">
+        @for (item of items; track item.title) {
+          <div class="ai-card">
+            <span class="ai-icon"><app-icon [name]="item.icon" /></span>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.body }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

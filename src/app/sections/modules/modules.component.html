@@ -1,0 +1,18 @@
+<section class="section modules-section" id="modules">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Complete Coverage</span>
+      <h2>HMS Modules</h2>
+      <p>Every module a multi-specialty hospital needs, licensed as your deployment grows.</p>
+    </div>
+
+    <div class="modules-grid">
+      @for (m of modules; track m.label; let i = $index) {
+        <div class="module-card" [style.--m-color]="colorFor(i)">
+          <span class="module-icon"><app-icon [name]="m.icon" /></span>
+          <h3>{{ m.label }}</h3>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,332 @@
+:root {
+  // Premium Teal Healthcare palette (given, not derived)
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --secondary: #14b8a6;
+  --accent: #3b82f6;
+  --accent-dark: #1d4ed8;
+  --cta: #f59e0b;
+  --cta-dark: #d97706;
+
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --heading: #111827;
+  --text: #334155;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+
+  --font-heading: 'Manrope', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-body: 'Inter', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --radius-sm: 12px;
+  --radius: 18px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 1px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 20px 45px -22px rgba(15, 23, 42, 0.22);
+  --shadow-lg: 0 30px 60px -28px rgba(15, 23, 42, 0.28);
+  --shadow-glow-teal: 0 16px 34px -12px rgba(15, 118, 110, 0.45);
+  --shadow-glow-blue: 0 16px 34px -12px rgba(59, 130, 246, 0.4);
+  --shadow-glow-amber: 0 16px 30px -10px rgba(245, 158, 11, 0.45);
+
+  --max-width: 1200px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-3);
+  color: var(--heading);
+}
+
+p {
+  margin: 0 0 var(--space-3);
+  color: var(--text);
+}
+
+a {
+  color: var(--primary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  padding: var(--space-7) 0;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+  color: var(--primary);
+  margin-bottom: var(--space-3);
+}
+
+.section-head {
+  text-align: center;
+  max-width: 660px;
+  margin: 0 auto var(--space-6);
+}
+
+.section-head h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+}
+
+.section-head p {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+}
+
+.shimmer {
+  background: linear-gradient(100deg, var(--primary), var(--secondary) 35%, var(--accent) 65%, var(--primary));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 300% center;
+  }
+}
+
+// ---------- glass surface (light-mode: shadow-driven depth, not glow borders) ----------
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid color-mix(in srgb, var(--primary) 12%, transparent);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+// ---------- ambient color wash (behind hero + a few sections) ----------
+.color-wash {
+  position: absolute;
+  inset: -10% -10% auto -10%;
+  height: 900px;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(70px);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+}
+
+@keyframes drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, 50px) scale(1.08);
+  }
+}
+
+@keyframes drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-50px, 30px) scale(1.1);
+  }
+}
+
+// ---------- buttons ----------
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.28s var(--ease),
+    box-shadow 0.28s var(--ease);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: var(--shadow-glow-teal);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.btn-cta {
+  background: linear-gradient(135deg, var(--cta), var(--cta-dark));
+  color: #241a04;
+  box-shadow: var(--shadow-glow-amber);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.btn-ghost {
+  background: color-mix(in srgb, var(--primary) 6%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+  color: var(--primary);
+
+  &:hover {
+    background: color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+}
+
+.btn-white {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.btn-sm {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.82rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+// ---------- icon ----------
+.icon {
+  width: 1.3em;
+  height: 1.3em;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+// ---------- grid (flex-wrap so a short last row centers instead of leaving empty grid tracks) ----------
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.grid-3 > * {
+  flex: 0 1 300px;
+}
+
+.grid-4 > * {
+  flex: 0 1 230px;
+}
+
+.grid-5 > * {
+  flex: 0 1 180px;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: var(--space-5) 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--primary);
+  color: #fff;
+  padding: var(--space-2) var(--space-3);
+  z-index: 200;
+
+  &:focus {
+    left: var(--space-3);
+    top: var(--space-3);
+  }
+}

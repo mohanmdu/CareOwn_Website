@@ -1,0 +1,29 @@
+<section class="section comparison-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Difference</span>
+      <h2>Traditional HMS vs. CareOwn HMS</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-traditional">Traditional Approach</th>
+            <th class="col-careown">CareOwn HMS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of rows; track row.label) {
+            <tr>
+              <th scope="row">{{ row.label }}</th>
+              <td class="col-traditional"><app-icon name="close" />{{ row.traditional }}</td>
+              <td class="col-careown"><app-icon name="check" />{{ row.careown }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
