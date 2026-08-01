@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           source: 'website.tar.gz'
-          target: '/home/deploy/incoming/'
+          target: '/home/ci/incoming/'
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -33,6 +33,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            rm -rf /home/deploy/incoming/website && mkdir -p /home/deploy/incoming/website
-            tar xzf /home/deploy/incoming/website.tar.gz -C /home/deploy/incoming/website
-            sudo /home/CareOwn_HMS/scripts/deploy-website.sh /home/deploy/incoming/website
+            rm -rf /home/ci/incoming/website && mkdir -p /home/ci/incoming/website
+            tar xzf /home/ci/incoming/website.tar.gz -C /home/ci/incoming/website
+            sudo /home/CareOwn_HMS/scripts/deploy-website.sh /home/ci/incoming/website
