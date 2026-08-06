@@ -17,12 +17,14 @@ import { TimelineComponent } from './sections/timeline/timeline.component';
 import { PricingComponent } from './sections/pricing/pricing.component';
 import { FaqComponent } from './sections/faq/faq.component';
 import { ContactComponent } from './sections/contact/contact.component';
+import { ToastComponent } from './shared/toast/toast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     IconSpriteComponent,
+    ToastComponent,
     HeaderComponent,
     FooterComponent,
     HeroComponent,

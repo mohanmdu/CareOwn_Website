@@ -84,14 +84,41 @@
       outline: 2px solid color-mix(in srgb, var(--primary) 40%, transparent);
       outline-offset: 1px;
     }
+
+    &.invalid {
+      border-color: #dc2626;
+    }
+  }
+
+  .field-error {
+    display: block;
+    font-size: 0.78rem;
+    color: #dc2626;
+    margin-top: 0.3rem;
   }
 }
 
-.form-note {
-  font-size: 0.76rem;
-  color: var(--text-faint);
-  margin: var(--space-2) 0 0;
-  text-align: center;
+.btn-block[disabled] {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.btn-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  vertical-align: -2px;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 900px) {

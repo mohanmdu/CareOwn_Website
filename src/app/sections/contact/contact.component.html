@@ -31,25 +31,72 @@
         </div>
       </div>
 
-      <form class="contact-form glass" (ngSubmit)="submit()">
+      <form class="contact-form glass" [formGroup]="form" (ngSubmit)="submit()" novalidate>
         <div class="form-row">
           <label for="c-name">Name</label>
-          <input id="c-name" name="name" required [(ngModel)]="name" placeholder="Your name" />
+          <input
+            id="c-name"
+            formControlName="name"
+            placeholder="Your name"
+            [class.invalid]="fieldInvalid('name')"
+          />
+          @if (fieldInvalid('name')) {
+            <span class="field-error">Name is required.</span>
+          }
         </div>
         <div class="form-row">
           <label for="c-email">Email</label>
-          <input id="c-email" name="email" type="email" required [(ngModel)]="email" placeholder="you@hospital.com" />
+          <input
+            id="c-email"
+            type="email"
+            formControlName="email"
+            placeholder="you@hospital.com"
+            [class.invalid]="fieldInvalid('email')"
+          />
+          @if (fieldInvalid('email')) {
+            <span class="field-error">Enter a valid email address.</span>
+          }
         </div>
         <div class="form-row">
           <label for="c-hospital">Hospital / Clinic Name</label>
-          <input id="c-hospital" name="hospital" [(ngModel)]="hospital" placeholder="MC Hospital" />
+          <input
+            id="c-hospital"
+            formControlName="hospitalName"
+            placeholder="MC Hospital"
+            [class.invalid]="fieldInvalid('hospitalName')"
+          />
+          @if (fieldInvalid('hospitalName')) {
+            <span class="field-error">Hospital/Clinic name is required.</span>
+          }
         </div>
         <div class="form-row">
           <label for="c-message">Message</label>
-          <textarea id="c-message" name="message" rows="4" [(ngModel)]="message" placeholder="Tell us about your hospital and what you need"></textarea>
+          <textarea
+            id="c-message"
+            formControlName="message"
+            rows="4"
+            placeholder="Tell us about your hospital and what you need"
+            [class.invalid]="fieldInvalid('message')"
+          ></textarea>
+          @if (fieldInvalid('message')) {
+            <span class="field-error">Message is too long.</span>
+          }
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-        <p class="form-note">Opens your email client, addressed to our team — this is a static site with no backend form handler.</p>
+
+        @if (recaptchaEnabled) {
+          <div class="form-row">
+            <app-recaptcha-widget (tokenChange)="onRecaptchaToken($event)" />
+          </div>
+        }
+
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="submitting()">
+          @if (submitting()) {
+            <span class="btn-spinner" aria-hidden="true"></span>
+            Sending...
+          } @else {
+            Send Message
+          }
+        </button>
       </form>
     </div>
   </div>

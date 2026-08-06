@@ -1,0 +1,98 @@
+:host {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 380px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid #16a34a;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  pointer-events: auto;
+  animation: toast-in 0.25s var(--ease);
+}
+
+.toast--error {
+  border-left-color: #dc2626;
+}
+
+.toast-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #16a34a;
+
+  .toast--error & {
+    background: #dc2626;
+  }
+
+  :host ::ng-deep .icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.toast-message {
+  flex: 1;
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--text);
+  padding-top: 2px;
+}
+
+.toast-close {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-faint);
+  cursor: pointer;
+  padding: 2px;
+  line-height: 0;
+
+  &:hover {
+    color: var(--text);
+  }
+
+  ::ng-deep .icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    left: var(--space-3);
+    right: var(--space-3);
+    top: var(--space-3);
+  }
+
+  .toast {
+    max-width: none;
+  }
+}
